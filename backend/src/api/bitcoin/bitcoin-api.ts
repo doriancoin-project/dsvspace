@@ -192,23 +192,49 @@ class BitcoinApi implements AbstractBitcoinApi {
       status: { confirmed: false },
     };
 
-    esploraTransaction.vout = transaction.vout.map((vout) => {
+    esploraTransaction.vout = transaction.vout.map((vout: any) => {
+      // Handle MWEB outputs which don't have scriptPubKey
+      if (vout.ismweb) {
+        return {
+          value: 0,
+          scriptpubkey: '',
+          scriptpubkey_address: '',
+          scriptpubkey_asm: '',
+          scriptpubkey_type: 'mweb',
+        };
+      }
       return {
         value: Math.round(vout.value * 100000000),
-        scriptpubkey: vout.scriptPubKey.hex,
-        scriptpubkey_address: vout.scriptPubKey && vout.scriptPubKey.address ? vout.scriptPubKey.address
-          : vout.scriptPubKey.addresses ? vout.scriptPubKey.addresses[0] : '',
-        scriptpubkey_asm: vout.scriptPubKey.asm ? this.convertScriptSigAsm(vout.scriptPubKey.hex) : '',
-        scriptpubkey_type: this.translateScriptPubKeyType(vout.scriptPubKey.type),
+        scriptpubkey: vout.scriptPubKey?.hex || '',
+        scriptpubkey_address: vout.scriptPubKey?.address ? vout.scriptPubKey.address
+          : vout.scriptPubKey?.addresses ? vout.scriptPubKey.addresses[0] : '',
+        scriptpubkey_asm: vout.scriptPubKey?.asm ? this.convertScriptSigAsm(vout.scriptPubKey.hex) : '',
+        scriptpubkey_type: this.translateScriptPubKeyType(vout.scriptPubKey?.type || ''),
       };
     });
 
-    esploraTransaction.vin = transaction.vin.map((vin) => {
+    esploraTransaction.vin = transaction.vin.map((vin: any) => {
+      // Handle MWEB inputs which don't have scriptSig
+      if (vin.ismweb) {
+        return {
+          is_coinbase: false,
+          is_mweb: true,
+          prevout: null,
+          scriptsig: '',
+          scriptsig_asm: '',
+          sequence: vin.sequence || 0,
+          txid: '',
+          vout: 0,
+          witness: [],
+          inner_redeemscript_asm: '',
+          inner_witnessscript_asm: '',
+        };
+      }
       return {
         is_coinbase: !!vin.coinbase,
         prevout: null,
-        scriptsig: vin.scriptSig && vin.scriptSig.hex || vin.coinbase || '',
-        scriptsig_asm: vin.scriptSig && this.convertScriptSigAsm(vin.scriptSig.hex) || '',
+        scriptsig: vin.scriptSig?.hex || vin.coinbase || '',
+        scriptsig_asm: vin.scriptSig ? this.convertScriptSigAsm(vin.scriptSig.hex) : '',
         sequence: vin.sequence,
         txid: vin.txid || '',
         vout: vin.vout || 0,
@@ -275,8 +301,11 @@ class BitcoinApi implements AbstractBitcoinApi {
 
   protected async $addPrevouts(transaction: TransactionExtended): Promise<TransactionExtended> {
     for (const vin of transaction.vin) {
-      if (vin.prevout) {
+      if (vin.prevout || (vin as any).is_mweb) {
         continue;
+      }
+      if (!vin.txid) {
+        continue; // Skip MWEB or invalid inputs
       }
       const innerTx = await this.$getRawTransaction(vin.txid, false, false);
       vin.prevout = innerTx.vout[vin.vout];
@@ -310,12 +339,25 @@ class BitcoinApi implements AbstractBitcoinApi {
       transaction.fee = 0;
       return transaction;
     }
+
+    // Check if this is an MWEB transaction (has MWEB inputs)
+    const hasMwebInputs = transaction.vin.some((vin: any) => vin.is_mweb);
+    if (hasMwebInputs) {
+      // For MWEB transactions, fee calculation from inputs isn't possible
+      // The fee should come from vkern or mempool entry
+      transaction.fee = -1;
+      return transaction;
+    }
+
     let totalIn = 0;
 
     for (let i = 0; i < transaction.vin.length; i++) {
       if (lazyPrevouts && i > 12) {
         transaction.vin[i].lazy = true;
         continue;
+      }
+      if (!transaction.vin[i].txid) {
+        continue; // Skip inputs without txid
       }
       const innerTx = await this.$getRawTransaction(transaction.vin[i].txid, false, false);
       transaction.vin[i].prevout = innerTx.vout[transaction.vin[i].vout];

@@ -7,7 +7,7 @@ class BlocksSummariesRepository {
     try {
       const [summary]: any[] = await DB.query(`SELECT * from blocks_summaries WHERE id = ?`, [id]);
       if (summary.length > 0) {
-        summary[0].transactions = JSON.parse(summary[0].transactions);
+        summary[0].transactions = typeof summary[0].transactions === 'string' ? JSON.parse(summary[0].transactions) : summary[0].transactions;
         return summary[0];
       }
     } catch (e) {
@@ -79,7 +79,7 @@ class BlocksSummariesRepository {
         return null;
       }
 
-      const transactions = JSON.parse(rows[0].transactions);
+      const transactions = typeof rows[0].transactions === 'string' ? JSON.parse(rows[0].transactions) : rows[0].transactions;
       if (transactions === null) {
         return null;
       }

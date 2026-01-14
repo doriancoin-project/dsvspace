@@ -96,12 +96,12 @@ class PoolsRepository {
       }
 
       if (parse) {
-        rows[0].regexes = JSON.parse(rows[0].regexes);
+        rows[0].regexes = typeof rows[0].regexes === 'string' ? JSON.parse(rows[0].regexes) : rows[0].regexes;
       }
       if (['testnet', 'signet'].includes(config.MEMPOOL.NETWORK)) {
         rows[0].addresses = []; // pools-v2.json only contains mainnet addresses
       } else if (parse) {
-        rows[0].addresses = JSON.parse(rows[0].addresses);
+        rows[0].addresses = typeof rows[0].addresses === 'string' ? JSON.parse(rows[0].addresses) : rows[0].addresses;
       }
 
       return rows[0];
@@ -128,12 +128,12 @@ class PoolsRepository {
       }
 
       if (parse) {
-        rows[0].regexes = JSON.parse(rows[0].regexes);
+        rows[0].regexes = typeof rows[0].regexes === 'string' ? JSON.parse(rows[0].regexes) : rows[0].regexes;
       }
       if (['testnet', 'signet'].includes(config.MEMPOOL.NETWORK)) {
         rows[0].addresses = []; // pools.json only contains mainnet addresses
       } else if (parse) {
-        rows[0].addresses = JSON.parse(rows[0].addresses);
+        rows[0].addresses = typeof rows[0].addresses === 'string' ? JSON.parse(rows[0].addresses) : rows[0].addresses;
       }
 
       return rows[0];

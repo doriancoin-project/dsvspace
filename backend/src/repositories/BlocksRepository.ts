@@ -998,7 +998,7 @@ class BlocksRepository {
     // BlockExtension
     extras.totalFees = dbBlk.totalFees;
     extras.medianFee = dbBlk.medianFee;
-    extras.feeRange = JSON.parse(dbBlk.feeRange);
+    extras.feeRange = typeof dbBlk.feeRange === 'string' ? JSON.parse(dbBlk.feeRange) : dbBlk.feeRange;
     extras.reward = dbBlk.reward;
     extras.pool = {
       id: dbBlk.poolId,
@@ -1016,7 +1016,7 @@ class BlocksRepository {
     extras.totalOutputs = dbBlk.totalOutputs;
     extras.totalOutputAmt = dbBlk.totalOutputAmt;
     extras.medianFeeAmt = dbBlk.medianFeeAmt;
-    extras.feePercentiles = JSON.parse(dbBlk.feePercentiles);
+    extras.feePercentiles = typeof dbBlk.feePercentiles === 'string' ? JSON.parse(dbBlk.feePercentiles) : dbBlk.feePercentiles;
     extras.segwitTotalTxs = dbBlk.segwitTotalTxs;
     extras.segwitTotalSize = dbBlk.segwitTotalSize;
     extras.segwitTotalWeight = dbBlk.segwitTotalWeight;

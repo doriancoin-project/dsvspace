@@ -60,12 +60,12 @@ class BlocksAuditRepositories {
       `);
       
       if (rows.length) {
-        rows[0].missingTxs = JSON.parse(rows[0].missingTxs);
-        rows[0].addedTxs = JSON.parse(rows[0].addedTxs);
-        rows[0].freshTxs = JSON.parse(rows[0].freshTxs);
-        rows[0].sigopTxs = JSON.parse(rows[0].sigopTxs);
-        rows[0].transactions = JSON.parse(rows[0].transactions);
-        rows[0].template = JSON.parse(rows[0].template);
+        rows[0].missingTxs = typeof rows[0].missingTxs === 'string' ? JSON.parse(rows[0].missingTxs) : rows[0].missingTxs;
+        rows[0].addedTxs = typeof rows[0].addedTxs === 'string' ? JSON.parse(rows[0].addedTxs) : rows[0].addedTxs;
+        rows[0].freshTxs = typeof rows[0].freshTxs === 'string' ? JSON.parse(rows[0].freshTxs) : rows[0].freshTxs;
+        rows[0].sigopTxs = typeof rows[0].sigopTxs === 'string' ? JSON.parse(rows[0].sigopTxs) : rows[0].sigopTxs;
+        rows[0].transactions = typeof rows[0].transactions === 'string' ? JSON.parse(rows[0].transactions) : rows[0].transactions;
+        rows[0].template = typeof rows[0].template === 'string' ? JSON.parse(rows[0].template) : rows[0].template;
 
         if (rows[0].transactions.length) {
           return rows[0];
