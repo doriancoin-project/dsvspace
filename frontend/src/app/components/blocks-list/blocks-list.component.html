@@ -83,7 +83,7 @@
         </tr>
       </tbody>
       <ng-template #skeleton>
-        <tbody>
+        <tbody *ngIf="!loadingError">
           <tr *ngFor="let item of skeletonLines">
             <td class="height text-left" [ngClass]="{'widget': widget, 'legacy': !indexingAvailable}">
               <span class="skeleton-loader" style="max-width: 75px"></span>
@@ -111,6 +111,17 @@
             </td>
             <td class="size" *ngIf="!widget" [class]="indexingAvailable ? '' : 'legacy'">
               <span class="skeleton-loader"></span>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="loadingError">
+          <tr>
+            <td colspan="9" class="text-center" style="padding: 50px 20px;">
+              <div style="color: #aaa;">
+                <h4>Block data not yet available</h4>
+                <p>The blockchain is still being indexed. This page will automatically update when data becomes available.</p>
+                <p style="font-size: 14px; color: #888;">Check the indexing progress in the header above.</p>
+              </div>
             </td>
           </tr>
         </tbody>

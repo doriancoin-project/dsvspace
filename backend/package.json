@@ -1,22 +1,22 @@
 {
-  "name": "mempool-ltc-backend",
-  "version": "2.6.0-dev",
-  "description": "Litecoin mempool visualizer and blockchain explorer backend",
+  "name": "dsvspace-backend",
+  "version": "1.0.0",
+  "description": "Doriancoin mempool visualizer and blockchain explorer backend",
   "license": "GNU Affero General Public License v3.0",
-  "homepage": "https://litecoinspace.org",
+  "homepage": "https://blocks.doriancoin.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mempool/mempool"
+    "url": "git+https://github.com/user/dsvspace"
   },
   "bugs": {
-    "url": "https://github.com/mempool/mempool/issues"
+    "url": "https://github.com/user/dsvspace/issues"
   },
   "keywords": [
-    "litecoin",
+    "doriancoin",
+    "dsv",
     "mempool",
     "blockchain",
-    "explorer",
-    "lightning"
+    "explorer"
   ],
   "main": "index.ts",
   "scripts": {

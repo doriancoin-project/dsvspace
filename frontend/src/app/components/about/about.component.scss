@@ -19,18 +19,19 @@
 
   .intro {
     margin: 25px auto 30px;
-    width: 250px;
+    width: 500px;
+    max-width: 90%;
     display: flex;
     flex-direction: column;
     .logo {
-      height: 113px;
-      width: 282px; // LTCbrand: vertical logo
+      max-width: 100%;
+      height: auto;
       margin: auto;
     }
     .version {
       text-align: right;
       font-size: 10px;
-      margin-top: -10px;
+      margin-top: 10px;
     }
   }
 

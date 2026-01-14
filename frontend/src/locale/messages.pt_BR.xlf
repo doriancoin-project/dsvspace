@@ -138,8 +138,8 @@
         <note from="meaning" priority="1">transaction.fee-per-vbyte</note>
       </trans-unit>
       <trans-unit datatype="html" id="d2eb45d1cd8cd146b7cb0223ab97a4b03b614060">
-        <source>lit/vB</source>
-        <target>lit/vB</target>
+        <source>dsv/vB</source>
+        <target>dsv/vB</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/transaction/transaction.component.html</context>
           <context context-type="linenumber">81</context>
@@ -188,7 +188,7 @@
           <context context-type="sourcefile">src/app/dashboard/dashboard.component.html</context>
           <context context-type="linenumber">117</context>
         </context-group>
-        <note from="description" priority="1">lit/vB</note>
+        <note from="description" priority="1">dsv/vB</note>
         <note from="meaning" priority="1">shared.sat-vbyte</note>
       </trans-unit>
       <trans-unit datatype="html" id="0d6ed649666c5cdcf12be0216d82051bba3614b0">
@@ -958,8 +958,8 @@
         <note from="description" priority="1">about.sponsor.amount-required</note>
       </trans-unit>
       <trans-unit datatype="html" id="c525ee366d56496a39853d54f8f08fcaed0eaf40">
-        <source>Minimum amount is 0.001 LTC</source>
-        <target>Quantidade mínima é 0,001 LTC</target>
+        <source>Minimum amount is 0.001 DSV</source>
+        <target>Quantidade mínima é 0,001 DSV</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/about/about.component.html</context>
           <context context-type="linenumber">83</context>
@@ -967,8 +967,8 @@
         <note from="description" priority="1">about.sponsor.minimum-amount</note>
       </trans-unit>
       <trans-unit datatype="html" id="9b8d8dedba1ce2bf7b44f324993f8df5d7a75410">
-        <source>If you donate 0.01 LTC or more, your profile photo will be added to the list of sponsors above :)</source>
-        <target>Se você doar 0,01 LTC ou mais, sua foto de perfil será adicionada na lista de patrocinadores acima :)</target>
+        <source>If you donate 0.01 DSV or more, your profile photo will be added to the list of sponsors above :)</source>
+        <target>Se você doar 0,01 DSV ou mais, sua foto de perfil será adicionada na lista de patrocinadores acima :)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/about/about.component.html</context>
           <context context-type="linenumber">92</context>
@@ -1021,8 +1021,8 @@
         <note from="description" priority="1">statistics.loading-graphs</note>
       </trans-unit>
       <trans-unit datatype="html" id="75c20c8a9cd9723d45bee0230dd582d7c2e4ecbc">
-        <source>Mempool by vBytes (lit/vByte)</source>
-        <target>Mempool em vBytes (lit/vByte)</target>
+        <source>Mempool by vBytes (dsv/vByte)</source>
+        <target>Mempool em vBytes (dsv/vByte)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/statistics/statistics.component.html</context>
           <context context-type="linenumber">16</context>

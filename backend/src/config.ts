@@ -143,8 +143,8 @@ const defaults: IConfig = {
     'USER_AGENT': 'mempool',
     'STDOUT_LOG_MIN_PRIORITY': 'debug',
     'AUTOMATIC_BLOCK_REINDEXING': false,
-    'POOLS_JSON_URL': 'https://raw.githubusercontent.com/litecoin-foundation/mining-pools-ltc/master/pools.json',
-    'POOLS_JSON_TREE_URL': 'https://api.github.com/repos/litecoin-foundation/mining-pools-ltc/git/trees/master',
+    'POOLS_JSON_URL': '',  // Doriancoin: mining pool identification disabled for now
+    'POOLS_JSON_TREE_URL': '',
     'AUDIT': false,
     'ADVANCED_GBT_AUDIT': false,
     'ADVANCED_GBT_MEMPOOL': false,
@@ -164,14 +164,14 @@ const defaults: IConfig = {
   },
   'CORE_RPC': {
     'HOST': '127.0.0.1',
-    'PORT': 8332,
+    'PORT': 1948,  // Doriancoin mainnet RPC port
     'USERNAME': 'mempool',
     'PASSWORD': 'mempool',
     'TIMEOUT': 60000,
   },
   'SECOND_CORE_RPC': {
     'HOST': '127.0.0.1',
-    'PORT': 8332,
+    'PORT': 1948,  // Doriancoin mainnet RPC port
     'USERNAME': 'mempool',
     'PASSWORD': 'mempool',
     'TIMEOUT': 60000,
@@ -225,8 +225,8 @@ const defaults: IConfig = {
     'PASSWORD': ''
   },
   'EXTERNAL_DATA_SERVER': {
-    'MEMPOOL_API': 'https://litecoinspace.org/api/v1',
-    'MEMPOOL_ONION': 'http://TODO: litecoin.onion/api/v1',
+    'MEMPOOL_API': 'https://blocks.doriancoin.com/api/v1',
+    'MEMPOOL_ONION': '',  // Doriancoin: no onion service configured
   },
   'MAXMIND': {
     'ENABLED': false,

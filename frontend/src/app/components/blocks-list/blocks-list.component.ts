@@ -25,6 +25,7 @@ export class BlocksList implements OnInit, OnDestroy {
   auditAvailable = false;
   isLoading = true;
   loadingScores = true;
+  loadingError = false;
   fromBlockHeight = undefined;
   paginationMaxSize: number;
   page = 1;
@@ -58,6 +59,7 @@ export class BlocksList implements OnInit, OnDestroy {
       this.fromHeightSubject.pipe(
         switchMap((fromBlockHeight) => {
           this.isLoading = true;
+          this.loadingError = false;
           return this.apiService.getBlocks$(this.page === 1 ? undefined : fromBlockHeight)
             .pipe(
               tap(blocks => {
@@ -65,6 +67,7 @@ export class BlocksList implements OnInit, OnDestroy {
                   this.blocksCount = blocks[0].height + 1;
                 }
                 this.isLoading = false;
+                this.loadingError = false;
                 this.lastBlockHeight = Math.max(...blocks.map(o => o.height))
               }),
               map(blocks => {
@@ -80,7 +83,13 @@ export class BlocksList implements OnInit, OnDestroy {
                 }
                 return blocks;
               }),
-              retryWhen(errors => errors.pipe(delayWhen(() => timer(10000))))
+              retryWhen(errors => errors.pipe(
+                tap(() => {
+                  this.loadingError = true;
+                  this.isLoading = false;
+                }),
+                delayWhen(() => timer(30000))
+              ))
             )
         })
       ),

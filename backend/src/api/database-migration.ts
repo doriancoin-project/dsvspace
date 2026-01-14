@@ -138,7 +138,7 @@ class DatabaseMigration {
       await this.$executeQuery('ALTER TABLE blocks MODIFY `weight` integer unsigned NOT NULL DEFAULT "0"');
       await this.$executeQuery('ALTER TABLE blocks MODIFY `difficulty` double NOT NULL DEFAULT "0"');
       // We also fix the pools.id type so we need to drop/re-create the foreign key
-      await this.$executeQuery('ALTER TABLE blocks DROP FOREIGN KEY IF EXISTS `blocks_ibfk_1`');
+      try { await this.$executeQuery('ALTER TABLE blocks DROP FOREIGN KEY `blocks_ibfk_1`'); } catch (e) { }
       await this.$executeQuery('ALTER TABLE pools MODIFY `id` smallint unsigned AUTO_INCREMENT');
       await this.$executeQuery('ALTER TABLE blocks MODIFY `pool_id` smallint unsigned NULL');
       await this.$executeQuery('ALTER TABLE blocks ADD FOREIGN KEY (`pool_id`) REFERENCES `pools` (`id`)');
@@ -334,7 +334,7 @@ class DatabaseMigration {
     }
 
     if (databaseSchemaVersion < 32 && isBitcoin == true) {
-      await this.$executeQuery('ALTER TABLE `blocks_summaries` ADD `template` JSON DEFAULT "[]"');
+      await this.$executeQuery('ALTER TABLE `blocks_summaries` ADD `template` JSON NULL');
       await this.updateToSchemaVersion(32);
     }
 
@@ -409,12 +409,12 @@ class DatabaseMigration {
     }
 
     if (databaseSchemaVersion < 45 && isBitcoin === true) {
-      await this.$executeQuery('ALTER TABLE `blocks_audits` ADD fresh_txs JSON DEFAULT "[]"');
+      await this.$executeQuery('ALTER TABLE `blocks_audits` ADD fresh_txs JSON NULL');
       await this.updateToSchemaVersion(45);
     }
 
     if (databaseSchemaVersion < 46) {
-      await this.$executeQuery(`ALTER TABLE blocks MODIFY blockTimestamp timestamp NOT NULL DEFAULT 0`);
+      await this.$executeQuery(`ALTER TABLE blocks MODIFY blockTimestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP`);
       await this.updateToSchemaVersion(46);
     }
 
@@ -435,7 +435,7 @@ class DatabaseMigration {
       await this.$executeQuery('ALTER TABLE `channels` ADD funding_ratio float unsigned DEFAULT NULL');
       await this.$executeQuery('ALTER TABLE `channels` ADD closed_by varchar(66) DEFAULT NULL');
       await this.$executeQuery('ALTER TABLE `channels` ADD single_funded tinyint(1) DEFAULT 0');
-      await this.$executeQuery('ALTER TABLE `channels` ADD outputs JSON DEFAULT "[]"');
+      await this.$executeQuery('ALTER TABLE `channels` ADD outputs JSON NULL');
       await this.updateToSchemaVersion(48);
     }
 
@@ -516,7 +516,7 @@ class DatabaseMigration {
     }
 
     if (databaseSchemaVersion < 60 && isBitcoin === true) {
-      await this.$executeQuery('ALTER TABLE `blocks_audits` ADD sigop_txs JSON DEFAULT "[]"');
+      await this.$executeQuery('ALTER TABLE `blocks_audits` ADD sigop_txs JSON NULL');
       await this.updateToSchemaVersion(60);
     }
   }

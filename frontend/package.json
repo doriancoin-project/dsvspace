@@ -1,18 +1,19 @@
 {
-  "name": "litepool-frontend",
-  "version": "2.6.0-dev",
-  "description": "Litecoin mempool visualizer and blockchain explorer backend",
+  "name": "dsvspace-frontend",
+  "version": "1.0.0",
+  "description": "Doriancoin mempool visualizer and blockchain explorer",
   "license": "GNU Affero General Public License v3.0",
-  "homepage": "https://litecoinspace.org",
+  "homepage": "https://blocks.doriancoin.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/litecoin-foundation/ltcspace"
+    "url": "git+https://github.com/user/dsvspace"
   },
   "bugs": {
-    "url": "https://github.com/litecoin-foundation/ltcspace/issues"
+    "url": "https://github.com/user/dsvspace/issues"
   },
   "keywords": [
-    "litecoin",
+    "doriancoin",
+    "dsv",
     "mempool",
     "blockchain",
     "explorer"
@@ -34,7 +35,7 @@
     "start:local-staging": "npm run generate-config && npm run sync-assets-dev && npm run ng -- serve -c local-staging",
     "start:mixed": "npm run generate-config && npm run sync-assets-dev && npm run ng -- serve -c mixed",
     "build": "npm run generate-config && npm run ng -- build --configuration production --localize && npm run sync-assets && npm run build-mempool.js",
-    "sync-assets": "rsync -av ./src/resources ./dist/mempool/browser && node sync-assets.js 'dist/mempool/browser/resources/'",
+    "sync-assets": "rsync -av ./src/resources ./dist/mempool/browser",
     "sync-assets-dev": "node sync-assets.js 'src/resources/'",
     "generate-config": "node generate-config.js",
     "build-mempool.js": "browserify -p tinyify ./node_modules/@mempool/mempool.js/lib/index.js --standalone mempoolJS > ./dist/mempool/browser/en-US/mempool.js",

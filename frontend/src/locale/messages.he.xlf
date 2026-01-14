@@ -2221,7 +2221,7 @@
         <note priority="1" from="meaning">transaction.fee-rate</note>
       </trans-unit>
       <trans-unit id="d2eb45d1cd8cd146b7cb0223ab97a4b03b614060" datatype="html">
-        <source>lit/vB</source>
+        <source>dsv/vB</source>
         <target>סאט/בית</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/block-overview-tooltip/block-overview-tooltip.component.html</context>
@@ -2315,7 +2315,7 @@
           <context context-type="sourcefile">src/app/dashboard/dashboard.component.html</context>
           <context context-type="linenumber">213,217</context>
         </context-group>
-        <note priority="1" from="description">lit/vB</note>
+        <note priority="1" from="description">dsv/vB</note>
         <note priority="1" from="meaning">shared.sat-vbyte</note>
       </trans-unit>
       <trans-unit id="54c58b39481f1749fce23fa8a77f616eee84d761" datatype="html">
@@ -4353,7 +4353,7 @@
           <context context-type="sourcefile">src/app/components/reward-stats/reward-stats.component.html</context>
           <context context-type="linenumber">33,36</context>
         </context-group>
-        <note priority="1" from="description">lit/vB</note>
+        <note priority="1" from="description">dsv/vB</note>
         <note priority="1" from="meaning">shared.sat-vbyte</note>
       </trans-unit>
       <trans-unit id="c4ae62409269c8255a390587baad3ff496889cba" datatype="html">
@@ -4460,8 +4460,8 @@
         <note priority="1" from="description">search.go-to</note>
       </trans-unit>
       <trans-unit id="75c20c8a9cd9723d45bee0230dd582d7c2e4ecbc" datatype="html">
-        <source>Mempool by vBytes (lit/vByte)</source>
-        <target>Mempool by vBytes (lit/vByte)</target>
+        <source>Mempool by vBytes (dsv/vByte)</source>
+        <target>Mempool by vBytes (dsv/vByte)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/statistics/statistics.component.html</context>
           <context context-type="linenumber">7</context>
@@ -5277,7 +5277,7 @@
         <note priority="1" from="meaning">tx-fee-rating.optimal</note>
       </trans-unit>
       <trans-unit id="60601e02e7c1f6c4dbabd0ef0bb8946003db8dec" datatype="html">
-        <source>Only ~<x id="INTERPOLATION" equiv-text="{{ medianFeeNeeded | feeRounding }}"/> lit/vB was needed to get into this block</source>
+        <source>Only ~<x id="INTERPOLATION" equiv-text="{{ medianFeeNeeded | feeRounding }}"/> dsv/vB was needed to get into this block</source>
         <target>רק <x id="INTERPOLATION" equiv-text="{{ medianFeeNeeded | feeRounding }}"/>~ סאט/בית נצרכו כדי להיכלל בבלוק הזה</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/tx-fee-rating/tx-fee-rating.component.html</context>
@@ -6794,7 +6794,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="7032954508645880700" datatype="html">
-        <source><x id="PH" equiv-text="this.amountShortenerPipe.transform(country.capacity / 100000000, 2)"/> LTC capacity</source>
+        <source><x id="PH" equiv-text="this.amountShortenerPipe.transform(country.capacity / 100000000, 2)"/> DSV capacity</source>
         <target><x id="PH" equiv-text="this.amountShortenerPipe.transform(country.capacity / 100000000, 2)"/> קיבולת לייטקוין</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/lightning/nodes-per-country-chart/nodes-per-country-chart.component.ts</context>
@@ -6912,8 +6912,8 @@
         <note priority="1" from="description">lightning.top-100-isp-ln</note>
       </trans-unit>
       <trans-unit id="3627306100664959238" datatype="html">
-        <source><x id="PH" equiv-text="this.amountShortenerPipe.transform(isp[2] / 100000000, 2)"/> LTC</source>
-        <target><x id="PH" equiv-text="this.amountShortenerPipe.transform(isp[2] / 100000000, 2)"/> LTC</target>
+        <source><x id="PH" equiv-text="this.amountShortenerPipe.transform(isp[2] / 100000000, 2)"/> DSV</source>
+        <target><x id="PH" equiv-text="this.amountShortenerPipe.transform(isp[2] / 100000000, 2)"/> DSV</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/lightning/nodes-per-isp-chart/nodes-per-isp-chart.component.ts</context>
           <context context-type="linenumber">159,157</context>

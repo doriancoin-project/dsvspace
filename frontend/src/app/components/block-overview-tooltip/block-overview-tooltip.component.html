@@ -25,13 +25,13 @@
       <tr>
         <td class="td-width" i18n="transaction.fee-rate|Transaction fee rate">Fee rate</td>
         <td>
-          {{ feeRate | feeRounding }} <span class="symbol" i18n="shared.sat-vbyte|lit/vB">lit/vB</span>
+          {{ feeRate | feeRounding }} <span class="symbol" i18n="shared.sat-vbyte|dsv/vB">dsv/vB</span>
         </td>
       </tr>
       <tr *ngIf="effectiveRate && effectiveRate !== feeRate">
         <td class="td-width" i18n="transaction.effective-fee-rate|Effective transaction fee rate">Effective fee rate</td>
         <td>
-          {{ effectiveRate | feeRounding }} <span class="symbol" i18n="shared.sat-vbyte|lit/vB">lit/vB</span>
+          {{ effectiveRate | feeRounding }} <span class="symbol" i18n="shared.sat-vbyte|dsv/vB">dsv/vB</span>
         </td>
       </tr>
       <tr>
