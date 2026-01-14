@@ -257,14 +257,14 @@ export function selectPowerOfTen(val: number): { divider: number, unit: string }
 
 const featureActivation = {
   mainnet: {
-    rbf: 399701,
-    segwit: 477120,
-    taproot: 709632,
+    rbf: 0, // RBF is policy-based (BIP125), not consensus
+    segwit: 1244000,
+    taproot: 1244220,
   },
   testnet: {
-    rbf: 720255,
-    segwit: 872730,
-    taproot: 2032291,
+    rbf: 0, // RBF is policy-based (BIP125), not consensus
+    segwit: 0, // Always active on testnet
+    taproot: 0, // Always active on testnet
   },
   signet: {
     rbf: 0,
