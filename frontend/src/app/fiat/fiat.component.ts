@@ -13,6 +13,7 @@ export class FiatComponent implements OnInit, OnDestroy {
   conversions$: Observable<any>;
   currencySubscription: Subscription;
   currency: string;
+  priceEnabled: boolean;
 
   @Input() value: number;
   @Input() digitsInfo = '1.2-2';
@@ -23,6 +24,7 @@ export class FiatComponent implements OnInit, OnDestroy {
     private stateService: StateService,
     private cd: ChangeDetectorRef,
   ) {
+    this.priceEnabled = this.stateService.env.HISTORICAL_PRICE;
     this.currencySubscription = this.stateService.fiatCurrency$.subscribe((fiat) => {
       this.currency = fiat;
       this.cd.markForCheck();

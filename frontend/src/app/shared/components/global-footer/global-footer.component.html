@@ -9,7 +9,7 @@
         <div class="selector">
           <app-language-selector></app-language-selector>
         </div>
-        <div class="selector">
+        <div class="selector" *ngIf="env.HISTORICAL_PRICE">
           <app-fiat-selector></app-fiat-selector>
         </div>
         <ng-template #temporaryHidden>
