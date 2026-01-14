@@ -120,7 +120,7 @@
             <thead>
               <th class="table-cell-txid" i18n="dashboard.latest-transactions.txid">TXID</th>
               <th class="table-cell-satoshis" i18n="dashboard.latest-transactions.amount">Amount</th>
-              <th class="table-cell-fiat" *ngIf="(network$ | async) === ''">{{ currency }}</th>
+              <th class="table-cell-fiat" *ngIf="(network$ | async) === '' && stateService.env.HISTORICAL_PRICE">{{ currency }}</th>
               <th class="table-cell-fees" i18n="transaction.fee|Transaction fee">Fee</th>
             </thead>
             <tbody>
@@ -131,7 +131,7 @@
                   </a>
                 </td>
                 <td class="table-cell-satoshis"><app-amount *ngIf="(network$ | async) !== 'liquid' && (network$ | async) !== 'liquidtestnet'; else liquidAmount" [satoshis]="transaction.value" digitsInfo="1.2-4" [noFiat]="true"></app-amount><ng-template #liquidAmount i18n="shared.confidential">Confidential</ng-template></td>
-                <td class="table-cell-fiat" *ngIf="(network$ | async) === ''" ><app-fiat [value]="transaction.value" digitsInfo="1.0-0"></app-fiat></td>
+                <td class="table-cell-fiat" *ngIf="(network$ | async) === '' && stateService.env.HISTORICAL_PRICE"><app-fiat [value]="transaction.value" digitsInfo="1.0-0"></app-fiat></td>
                 <td class="table-cell-fees">{{ transaction.fee / transaction.vsize | feeRounding }} <span class="symbol" i18n="shared.sat-vbyte|dsv/vB">dsv/vB</span></td>
               </tr>
             </tbody>
