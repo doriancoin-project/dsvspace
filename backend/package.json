@@ -6,10 +6,10 @@
   "homepage": "https://blocks.doriancoin.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/user/dsvspace"
+    "url": "git+https://github.com/doriancoin-project/dsvspace"
   },
   "bugs": {
-    "url": "https://github.com/user/dsvspace/issues"
+    "url": "https://github.com/doriancoin-project/dsvspace/issues"
   },
   "keywords": [
     "doriancoin",
