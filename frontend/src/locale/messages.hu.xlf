@@ -5361,8 +5361,8 @@
         <note priority="1" from="description">dashboard.lbtc-pegs-in-circulation</note>
       </trans-unit>
       <trans-unit id="8f2791f5d9656271dd6c385f5ad572716e90f4a2" datatype="html">
-        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="litecoinspace.org merely provides data about the Litecoin network.&lt;/b&gt; It cannot help you with"/>litecoinspace.org merely provides data about the Litecoin network.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> It cannot help you with retrieving funds, confirming your transaction quicker, etc.</source>
-        <target><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="litecoinspace.org merely provides data about the Litecoin network.&lt;/b&gt; It cannot help you with"/>A litecoinspace.org csupán adatokat szolgáltat a Litecoin hálózatáról.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> Nem segíthet a pénzeszközök visszaszerzésében, a tranzakció gyorsabb visszaigazolásában stb.</target>
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="blocks.doriancoin.com merely provides data about the Doriancoin network.&lt;/b&gt; It cannot help you with"/>blocks.doriancoin.com merely provides data about the Doriancoin network.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> It cannot help you with retrieving funds, confirming your transaction quicker, etc.</source>
+        <target><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="blocks.doriancoin.com merely provides data about the Doriancoin network.&lt;/b&gt; It cannot help you with"/>A blocks.doriancoin.com csupán adatokat szolgáltat a Litecoin hálózatáról.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> Nem segíthet a pénzeszközök visszaszerzésében, a tranzakció gyorsabb visszaigazolásában stb.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/docs/api-docs/api-docs.component.html</context>
           <context context-type="linenumber">13</context>
