@@ -1437,8 +1437,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="4b137ec8bf73a47063740b75c0c40d5fd3c48015" datatype="html">
-        <source>Litecoin Foundation</source>
-        <target>Litecoin Foundation</target>
+        <source>Doriancoin Project</source>
+        <target>Doriancoin Project</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/about/about.component.html</context>
           <context context-type="linenumber">12,13</context>
@@ -1446,8 +1446,8 @@
         <note priority="1" from="description">about.about-the-project</note>
       </trans-unit>
       <trans-unit id="8a4411dcb4da0aa489ec367bf2a3ec289e07a86e" datatype="html">
-        <source>Our mempool and blockchain explorer for the Litecoin community, focusing on the transaction fee market and multi-layer ecosystem, completely self-hosted without any trusted third-parties.</source>
-        <target>Litecoin समुदायको लागि हाम्रो mempool र blockchain अन्वेषक, लेनदेन शुल्क बजार र बहु-तह इकोसिस्टममा ध्यान केन्द्रित गर्दै, कुनै पनि विश्वसनीय तेस्रो-पक्ष बिना पूर्ण रूपमा स्व-होस्ट गरिएको।</target>
+        <source>Our mempool and blockchain explorer for the Doriancoin community, focusing on the transaction fee market and multi-layer ecosystem, completely self-hosted without any trusted third-parties.</source>
+        <target>Doriancoin समुदायको लागि हाम्रो mempool र blockchain अन्वेषक, लेनदेन शुल्क बजार र बहु-तह इकोसिस्टममा ध्यान केन्द्रित गर्दै, कुनै पनि विश्वसनीय तेस्रो-पक्ष बिना पूर्ण रूपमा स्व-होस्ट गरिएको।</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/about/about.component.html</context>
           <context context-type="linenumber">13,16</context>
@@ -4324,8 +4324,8 @@
         <note priority="1" from="description">mining.rewards-per-tx</note>
       </trans-unit>
       <trans-unit id="7deec1c1520f06170e1f8e8ddfbe4532312f638f" datatype="html">
-        <source>Your Gateway to Explore Litecoin</source>
-        <target>Litecoin इकोसिस्टम पूर्ण अन्वेषण गर्नुहोस्</target>
+        <source>Your Gateway to Explore Doriancoin</source>
+        <target>Doriancoin इकोसिस्टम पूर्ण अन्वेषण गर्नुहोस्</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/search-form/search-form.component.html</context>
           <context context-type="linenumber">4,5</context>
