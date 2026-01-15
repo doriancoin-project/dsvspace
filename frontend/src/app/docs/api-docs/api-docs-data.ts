@@ -86,7 +86,7 @@ def on_open(ws):
     ws.send(json.dumps(message))
 
 if __name__ == "__main__":
-    ws = websocket.WebSocketApp("wss://litecoinspace.org/api/v1/ws",
+    ws = websocket.WebSocketApp("wss://blocks.doriancoin.com/api/v1/ws",
                               on_open=on_open,
                               on_message=on_message,
                               on_error=on_error,
@@ -1491,7 +1491,7 @@ export const restApiDocsData = [
 
         const address = '%{1}';
         // Note: This endpoint is not yet available in mempoolJS, use direct fetch:
-        const response = await fetch(\`https://litecoinspace.org/api/address/\${address}/utxo-hex\`);
+        const response = await fetch(\`https://blocks.doriancoin.com/api/address/\${address}/utxo-hex\`);
         const addressUtxoHex = await response.json();
 
         document.getElementById("result").textContent = JSON.stringify(addressUtxoHex, undefined, 2);
@@ -1499,15 +1499,15 @@ export const restApiDocsData = [
           esModule: `
   // Note: This endpoint is not yet available in mempoolJS, use direct fetch:
   const address = '%{1}';
-  const response = await fetch(\`https://litecoinspace.org/api/address/\${address}/utxo-hex\`);
+  const response = await fetch(\`https://blocks.doriancoin.com/api/address/\${address}/utxo-hex\`);
   const addressUtxoHex = await response.json();
   console.log(addressUtxoHex);
           `,
         },
         codeSampleMainnet: {
-          esModule: [`ltc1q9yxj6rqwj2p8vqz6j7w3k9p8l2w9j4x5n6k7q`],
-          commonJS: [`ltc1q9yxj6rqwj2p8vqz6j7w3k9p8l2w9j4x5n6k7q`],
-          curl: [`ltc1q9yxj6rqwj2p8vqz6j7w3k9p8l2w9j4x5n6k7q`],
+          esModule: [`dsv1q5zm783w57m3vrw9f6lmwt39n5tg7p7dgvapqyw`],
+          commonJS: [`dsv1q5zm783w57m3vrw9f6lmwt39n5tg7p7dgvapqyw`],
+          curl: [`dsv1q5zm783w57m3vrw9f6lmwt39n5tg7p7dgvapqyw`],
           response: `[
   {
     txid: "a4b5c6d7e8f9012345678901234567890123456789012345678901234567890",
@@ -1525,9 +1525,9 @@ export const restApiDocsData = [
 ]`
         },
         codeSampleTestnet: {
-          esModule: [`tltc1q4kgratttzjvkxfmgd95z54qcq7y6hekdm3w56u`],
-          commonJS: [`tltc1q4kgratttzjvkxfmgd95z54qcq7y6hekdm3w56u`],
-          curl: [`tltc1q4kgratttzjvkxfmgd95z54qcq7y6hekdm3w56u`],
+          esModule: [`tdsv1q5zm783w57m3vrw9f6lmwt39n5tg7p7dg8xyzab`],
+          commonJS: [`tdsv1q5zm783w57m3vrw9f6lmwt39n5tg7p7dg8xyzab`],
+          curl: [`tdsv1q5zm783w57m3vrw9f6lmwt39n5tg7p7dg8xyzab`],
           response: `[
   {
     txid: "c404bc4ba89e9423ff772cb45268ba6fba8b713f809484c1216f1a657aafa088",
@@ -1545,9 +1545,9 @@ export const restApiDocsData = [
 ]`
         },
         codeSampleSignet: {
-          esModule: [`ltc1qkz2w3tr9v8l4j6g5p2m8n1k7q4b6c3x9y5z8s`],
-          commonJS: [`ltc1qkz2w3tr9v8l4j6g5p2m8n1k7q4b6c3x9y5z8s`],
-          curl: [`ltc1qkz2w3tr9v8l4j6g5p2m8n1k7q4b6c3x9y5z8s`],
+          esModule: [`dsv1q5zm783w57m3vrw9f6lmwt39n5tg7p7dgvapqyw`],
+          commonJS: [`dsv1q5zm783w57m3vrw9f6lmwt39n5tg7p7dgvapqyw`],
+          curl: [`dsv1q5zm783w57m3vrw9f6lmwt39n5tg7p7dgvapqyw`],
           response: `[
   {
     txid: "e58b47f657b496a083ad9a4fb10c744d5e993028efd9cfba149885334d98bdf5",
@@ -8962,7 +8962,7 @@ export const faqData = [
     category: "advanced",
     showConditions: bitcoinNetworks,
     fragment: "how-big-is-mempool-used-by-mempool-space",
-    title: "How big is the mempool used by litecoinspace.org?",
+    title: "How big is the mempool used by blocks.doriancoin.com?",
     options: { officialOnly: true },
   },
   {

@@ -35,8 +35,8 @@ describe('Mempool Backend Config', () => {
         EXTERNAL_RETRY_INTERVAL: 0,
         USER_AGENT: 'mempool',
         STDOUT_LOG_MIN_PRIORITY: 'debug',
-        POOLS_JSON_TREE_URL: 'https://api.github.com/repos/litecoin-foundation/mining-pools-ltc/git/trees/master',
-        POOLS_JSON_URL: 'https://raw.githubusercontent.com/litecoin-foundation/mining-pools-ltc/master/pools.json',
+        POOLS_JSON_TREE_URL: 'https://api.github.com/repos/doriancoin-project/mining-pools-dsv/git/trees/master',
+        POOLS_JSON_URL: 'https://raw.githubusercontent.com/doriancoin-project/mining-pools-dsv/master/pools.json',
         AUDIT: false,
         ADVANCED_GBT_AUDIT: false,
         ADVANCED_GBT_MEMPOOL: false,
@@ -96,8 +96,8 @@ describe('Mempool Backend Config', () => {
       });
 
       expect(config.EXTERNAL_DATA_SERVER).toStrictEqual({
-        MEMPOOL_API: 'https://litepool.space/api/v1',
-        MEMPOOL_ONION: 'http://TODO: litecoin.onion/api/v1',
+        MEMPOOL_API: 'https://blocks.doriancoin.com/api/v1',
+        MEMPOOL_ONION: 'http://TODO: doriancoin.onion/api/v1',
       });
 
       expect(config.MAXMIND).toStrictEqual({
