@@ -20,7 +20,8 @@ export class EnterpriseService {
   ) {
     const subdomain = this.document.location.hostname.indexOf(this.exclusiveHostName) > -1
       && this.document.location.hostname.split(this.exclusiveHostName)[0] || false;
-    if (subdomain && subdomain.match(/^[A-z0-9-_]+$/)) {
+    // Skip enterprise logic for the main site (blocks.doriancoin.com)
+    if (subdomain && subdomain !== 'blocks' && subdomain.match(/^[A-z0-9-_]+$/)) {
       this.subdomain = subdomain;
       this.fetchSubdomainInfo();
     } else {
