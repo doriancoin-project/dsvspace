@@ -72,7 +72,7 @@ class HashratesRepository {
     }
 
     query += ` GROUP BY UNIX_TIMESTAMP(hashrate_timestamp) DIV ${86400}`;
-    query += ` ORDER by hashrate_timestamp`;
+    query += ` ORDER BY UNIX_TIMESTAMP(hashrate_timestamp) DIV ${86400}`;
 
     try {
       const [rows]: any[] = await DB.query(query);
