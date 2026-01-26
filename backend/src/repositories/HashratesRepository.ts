@@ -60,8 +60,8 @@ class HashratesRepository {
     interval = Common.getSqlInterval(interval);
 
     let query = `SELECT
-      CAST(AVG(UNIX_TIMESTAMP(hashrate_timestamp)) as INT) as timestamp,
-      CAST(AVG(avg_hashrate) as DOUBLE) as avgHashrate
+      CAST(AVG(UNIX_TIMESTAMP(hashrate_timestamp)) as SIGNED) as timestamp,
+      AVG(avg_hashrate) as avgHashrate
       FROM hashrates`;
 
     if (interval) {
