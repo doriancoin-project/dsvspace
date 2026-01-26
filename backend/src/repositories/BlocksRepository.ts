@@ -677,9 +677,9 @@ class BlocksRepository {
   public async $getHistoricalBlockFees(div: number, interval: string | null): Promise<any> {
     try {
       let query = `SELECT
-        CAST(AVG(blocks.height) as INT) as avgHeight,
-        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as INT) as timestamp,
-        CAST(AVG(fees) as INT) as avgFees,
+        CAST(AVG(blocks.height) as SIGNED) as avgHeight,
+        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as SIGNED) as timestamp,
+        CAST(AVG(fees) as SIGNED) as avgFees,
         prices.USD
         FROM blocks
         JOIN blocks_prices on blocks_prices.height = blocks.height
@@ -706,9 +706,9 @@ class BlocksRepository {
   public async $getHistoricalBlockRewards(div: number, interval: string | null): Promise<any> {
     try {
       let query = `SELECT
-        CAST(AVG(blocks.height) as INT) as avgHeight,
-        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as INT) as timestamp,
-        CAST(AVG(reward) as INT) as avgRewards,
+        CAST(AVG(blocks.height) as SIGNED) as avgHeight,
+        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as SIGNED) as timestamp,
+        CAST(AVG(reward) as SIGNED) as avgRewards,
         prices.USD
         FROM blocks
         JOIN blocks_prices on blocks_prices.height = blocks.height
@@ -735,15 +735,15 @@ class BlocksRepository {
    public async $getHistoricalBlockFeeRates(div: number, interval: string | null): Promise<any> {
     try {
       let query = `SELECT
-        CAST(AVG(height) as INT) as avgHeight,
-        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as INT) as timestamp,
-        CAST(AVG(JSON_EXTRACT(fee_span, '$[0]')) as INT) as avgFee_0,
-        CAST(AVG(JSON_EXTRACT(fee_span, '$[1]')) as INT) as avgFee_10,
-        CAST(AVG(JSON_EXTRACT(fee_span, '$[2]')) as INT) as avgFee_25,
-        CAST(AVG(JSON_EXTRACT(fee_span, '$[3]')) as INT) as avgFee_50,
-        CAST(AVG(JSON_EXTRACT(fee_span, '$[4]')) as INT) as avgFee_75,
-        CAST(AVG(JSON_EXTRACT(fee_span, '$[5]')) as INT) as avgFee_90,
-        CAST(AVG(JSON_EXTRACT(fee_span, '$[6]')) as INT) as avgFee_100
+        CAST(AVG(height) as SIGNED) as avgHeight,
+        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as SIGNED) as timestamp,
+        CAST(AVG(JSON_EXTRACT(fee_span, '$[0]')) as SIGNED) as avgFee_0,
+        CAST(AVG(JSON_EXTRACT(fee_span, '$[1]')) as SIGNED) as avgFee_10,
+        CAST(AVG(JSON_EXTRACT(fee_span, '$[2]')) as SIGNED) as avgFee_25,
+        CAST(AVG(JSON_EXTRACT(fee_span, '$[3]')) as SIGNED) as avgFee_50,
+        CAST(AVG(JSON_EXTRACT(fee_span, '$[4]')) as SIGNED) as avgFee_75,
+        CAST(AVG(JSON_EXTRACT(fee_span, '$[5]')) as SIGNED) as avgFee_90,
+        CAST(AVG(JSON_EXTRACT(fee_span, '$[6]')) as SIGNED) as avgFee_100
       FROM blocks`;
 
       if (interval !== null) {
@@ -766,9 +766,9 @@ class BlocksRepository {
    public async $getHistoricalBlockSizes(div: number, interval: string | null): Promise<any> {
     try {
       let query = `SELECT
-        CAST(AVG(height) as INT) as avgHeight,
-        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as INT) as timestamp,
-        CAST(AVG(size) as INT) as avgSize
+        CAST(AVG(height) as SIGNED) as avgHeight,
+        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as SIGNED) as timestamp,
+        CAST(AVG(size) as SIGNED) as avgSize
       FROM blocks`;
 
       if (interval !== null) {
@@ -791,9 +791,9 @@ class BlocksRepository {
    public async $getHistoricalBlockWeights(div: number, interval: string | null): Promise<any> {
     try {
       let query = `SELECT
-        CAST(AVG(height) as INT) as avgHeight,
-        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as INT) as timestamp,
-        CAST(AVG(weight) as INT) as avgWeight
+        CAST(AVG(height) as SIGNED) as avgHeight,
+        CAST(AVG(UNIX_TIMESTAMP(blockTimestamp)) as SIGNED) as timestamp,
+        CAST(AVG(weight) as SIGNED) as avgWeight
       FROM blocks`;
 
       if (interval !== null) {

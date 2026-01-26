@@ -31,11 +31,11 @@ class DifficultyAdjustmentsRepository {
   public async $getAdjustments(interval: string | null, descOrder: boolean = false): Promise<IndexedDifficultyAdjustment[]> {
     interval = Common.getSqlInterval(interval);
 
-    let query = `SELECT 
-      CAST(AVG(UNIX_TIMESTAMP(time)) as INT) as time,
-      CAST(AVG(height) AS INT) as height,
-      CAST(AVG(difficulty) as DOUBLE) as difficulty,
-      CAST(AVG(adjustment) as DOUBLE) as adjustment
+    let query = `SELECT
+      CAST(AVG(UNIX_TIMESTAMP(time)) as SIGNED) as time,
+      CAST(AVG(height) AS SIGNED) as height,
+      AVG(difficulty) as difficulty,
+      AVG(adjustment) as adjustment
       FROM difficulty_adjustments`;
 
     if (interval) {
@@ -45,9 +45,9 @@ class DifficultyAdjustmentsRepository {
     query += ` GROUP BY UNIX_TIMESTAMP(time) DIV ${86400}`;
 
     if (descOrder === true) {
-      query += ` ORDER BY height DESC`;
+      query += ` ORDER BY UNIX_TIMESTAMP(time) DIV ${86400} DESC`;
     } else {
-      query += ` ORDER BY height`;
+      query += ` ORDER BY UNIX_TIMESTAMP(time) DIV ${86400}`;
     }
 
     try {
