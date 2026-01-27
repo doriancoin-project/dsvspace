@@ -108,12 +108,6 @@ export function calculateLWMAEstimate(
     return { difficultyChange: 0, weightedAvgSolvetime: T };
   }
 
-  // Determine if we're using LWMAv2 based on block height
-  const lwmaV2Height = network === 'testnet'
-    ? LWMA_V2_ACTIVATION_HEIGHT_TESTNET
-    : LWMA_V2_ACTIVATION_HEIGHT;
-  const useLWMAv2 = currentBlock.height >= lwmaV2Height;
-
   // Calculate weighted solve times
   // Weight increases from 1 (oldest) to N (newest)
   let sumWeightedSolvetimes = 0;
@@ -147,36 +141,28 @@ export function calculateLWMAEstimate(
   const weightedAvgSolvetime = sumWeightedSolvetimes / sumWeights;
 
   // Calculate difficulty change percentage
-  let difficultyChange: number;
+  // Use the simple ratio-based formula: (targetTime / actualAvgTime - 1) * 100
+  // This gives an intuitive "blocks are X% slow, so difficulty decreases by Y%"
+  // interpretation and matches what users expect to see.
+  //
+  // Note: The actual LWMA algorithm uses window-start difficulty as reference,
+  // but for an ESTIMATE display, the simple formula is more meaningful since
+  // it doesn't depend on having the full 45-block window available.
+  const targetRatio = T / weightedAvgSolvetime;
+  let difficultyChange = (targetRatio - 1) * 100;
 
-  if (useLWMAv2 && blocksAvailable >= 3) {
-    // LWMAv2: nextTarget = windowStartTarget * ratio
-    // nextDifficulty = windowStartDifficulty / ratio
-    // percentChange = (nextDifficulty - currentDifficulty) / currentDifficulty * 100
-    const windowStartBlock = sortedBlocks[blocksAvailable];
-    const currentDifficulty = currentBlock.difficulty;
-    const windowStartDifficulty = windowStartBlock?.difficulty || currentDifficulty;
+  // Apply caps matching the actual algorithm limits
+  // LWMAv2 (current): max 3x adjustment = +200% to -66.67%
+  // LWMAv1 (historical): max 10x adjustment = +100% to -90%
+  const lwmaV2Height = network === 'testnet'
+    ? LWMA_V2_ACTIVATION_HEIGHT_TESTNET
+    : LWMA_V2_ACTIVATION_HEIGHT;
+  const useLWMAv2 = currentBlock.height >= lwmaV2Height;
 
-    // ratio = sumWeightedSolvetimes / expectedWeightedSolvetimes
-    const expectedWeightedSolvetimes = sumWeights * T;
-    const lwmaRatio = sumWeightedSolvetimes / expectedWeightedSolvetimes;
-
-    // nextDifficulty = windowStartDifficulty / lwmaRatio
-    const nextDifficulty = windowStartDifficulty / lwmaRatio;
-    difficultyChange = ((nextDifficulty - currentDifficulty) / currentDifficulty) * 100;
-
-    // Apply LWMAv2's tighter caps (max 3x adjustment)
-    // 3x increase means +200%, 3x decrease means -66.67%
+  if (useLWMAv2) {
     if (difficultyChange > 200) difficultyChange = 200;
     if (difficultyChange < -66.67) difficultyChange = -66.67;
   } else {
-    // LWMAv1: nextTarget = prevTarget * ratio
-    // nextDifficulty = prevDifficulty / ratio
-    // percentChange = (1/ratio - 1) * 100 = (T/weightedAvg - 1) * 100
-    const targetRatio = T / weightedAvgSolvetime;
-    difficultyChange = (targetRatio - 1) * 100;
-
-    // Apply LWMAv1's caps (max 10x adjustment)
     if (difficultyChange > 100) difficultyChange = 100;
     if (difficultyChange < -90) difficultyChange = -90;
   }
