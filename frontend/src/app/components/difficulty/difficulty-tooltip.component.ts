@@ -16,7 +16,9 @@ interface EpochProgress {
   timeUntilHalving: number;
 }
 
-const EPOCH_BLOCK_LENGTH = 2016; // Bitcoin mainnet
+// Doriancoin uses ASERT which adjusts every block (no epoch).
+// This constant is only used for the visual progress bar grid layout.
+const EPOCH_BLOCK_LENGTH = 2016;
 
 @Component({
   selector: 'app-difficulty-tooltip',

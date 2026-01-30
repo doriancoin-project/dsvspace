@@ -147,15 +147,16 @@ export const restApiDocsData = [
           commonJS: [],
           curl: [],
           response: `{
-  progressPercent: 44.397234501112074,
-  difficultyChange: 98.45932018381687,
+  progressPercent: 100,
+  difficultyChange: 1.2345,
   estimatedRetargetDate: 1627762478,
-  remainingBlocks: 1121,
-  remainingTime: 665977,
-  previousRetarget: -4.807005268478962,
-  nextRetargetHeight: 741888,
-  timeAvg: 302328,
-  timeOffset: 0
+  remainingBlocks: 1,
+  remainingTime: 148500,
+  previousRetarget: 1.2345,
+  nextRetargetHeight: 1246200,
+  timeAvg: 148500,
+  timeOffset: 0,
+  expectedBlocks: 1
 }`
         },
         codeSampleTestnet: {
@@ -163,15 +164,16 @@ export const restApiDocsData = [
           commonJS: [],
           curl: [],
           response: `{
-  progressPercent: 44.397234501112074,
-  difficultyChange: 98.45932018381687,
+  progressPercent: 100,
+  difficultyChange: 1.2345,
   estimatedRetargetDate: 1627762478,
-  remainingBlocks: 1121,
-  remainingTime: 665977,
-  previousRetarget: -4.807005268478962,
-  nextRetargetHeight: 741888,
-  timeAvg: 302328,
-  timeOffset: 0
+  remainingBlocks: 1,
+  remainingTime: 148500,
+  previousRetarget: 1.2345,
+  nextRetargetHeight: 1246200,
+  timeAvg: 148500,
+  timeOffset: 0,
+  expectedBlocks: 1
 }`
         },
         codeSampleSignet: {
@@ -179,15 +181,16 @@ export const restApiDocsData = [
           commonJS: [],
           curl: [],
           response: `{
-  progressPercent: 44.397234501112074,
-  difficultyChange: 98.45932018381687,
+  progressPercent: 100,
+  difficultyChange: 1.2345,
   estimatedRetargetDate: 1627762478,
-  remainingBlocks: 1121,
-  remainingTime: 665977,
-  previousRetarget: -4.807005268478962,
-  nextRetargetHeight: 741888,
-  timeAvg: 302328,
-  timeOffset: 0
+  remainingBlocks: 1,
+  remainingTime: 148500,
+  previousRetarget: 1.2345,
+  nextRetargetHeight: 1246200,
+  timeAvg: 148500,
+  timeOffset: 0,
+  expectedBlocks: 1
 }`
         },
         codeSampleLiquid: {
@@ -195,15 +198,16 @@ export const restApiDocsData = [
           commonJS: [],
           curl: [],
           response: `{
-  progressPercent: 44.397234501112074,
-  difficultyChange: 98.45932018381687,
+  progressPercent: 100,
+  difficultyChange: 1.2345,
   estimatedRetargetDate: 1627762478,
-  remainingBlocks: 1121,
-  remainingTime: 665977,
-  previousRetarget: -4.807005268478962,
-  nextRetargetHeight: 741888,
-  timeAvg: 302328,
-  timeOffset: 0
+  remainingBlocks: 1,
+  remainingTime: 148500,
+  previousRetarget: 1.2345,
+  nextRetargetHeight: 1246200,
+  timeAvg: 148500,
+  timeOffset: 0,
+  expectedBlocks: 1
 }`
         }
       }
