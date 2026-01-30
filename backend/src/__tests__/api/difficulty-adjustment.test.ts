@@ -96,14 +96,14 @@ describe('ASERT Difficulty Adjustment', () => {
     expect(result.avgSolveTime).toBeCloseTo(150, 1);
   });
 
-  test('should clamp negative solve times to 1 second', () => {
-    // Test with blocks that have timestamp variance (negative solve time)
+  test('should clamp solve times to valid range', () => {
+    // Test with blocks that have extreme solve times
     const baseTime = 1700000000;
     const mockBlocks: MockBlock[] = [
       { height: 1246100, timestamp: baseTime, difficulty: 100 },
       { height: 1246101, timestamp: baseTime + 0, difficulty: 100 },      // 0s → clamped to 1s
-      { height: 1246102, timestamp: baseTime + 300, difficulty: 100 },    // 300s
-      { height: 1246103, timestamp: baseTime + 450, difficulty: 100 },    // 150s
+      { height: 1246102, timestamp: baseTime + 1500, difficulty: 100 },   // 1500s → clamped to 900s
+      { height: 1246103, timestamp: baseTime + 1650, difficulty: 100 },   // 150s
     ];
 
     const result = calculateASERTEstimate(mockBlocks);
@@ -112,6 +112,8 @@ describe('ASERT Difficulty Adjustment', () => {
     expect(typeof result.difficultyChange).toBe('number');
     expect(isNaN(result.difficultyChange)).toBe(false);
     expect(result.avgSolveTime).toBeGreaterThan(0);
+    // Upper clamp is 6*150=900s, so max avg is bounded
+    expect(result.avgSolveTime).toBeLessThanOrEqual(900);
   });
 
   test('should produce small per-block changes due to halflife', () => {
@@ -139,24 +141,29 @@ describe('ASERT Difficulty Adjustment', () => {
   });
 
   test('should handle halflife property correctly', () => {
-    // If blocks are exactly 1 halflife behind schedule per block,
-    // difficulty should halve (change ≈ -50%)
-    // avgSolveTime = T + halflife = 150 + 3600 = 3750 seconds
+    // ASERT halflife: if avg solve time exceeds target by halflife seconds,
+    // difficulty halves. However, solve times are clamped to 6*T = 900s.
+    // With the clamp, max avg is 900s, giving:
+    //   2^((150 - 900) / 3600) = 2^(-0.2083) ≈ -13.45%
+    //
+    // Test with unclamped value: 300s avg (within clamp)
+    //   2^((150 - 300) / 3600) = 2^(-0.04167) ≈ -2.85%
     const baseTime = 1700000000;
     const mockBlocks: MockBlock[] = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
       mockBlocks.push({
         height: 1246100 + i,
-        timestamp: baseTime + i * 3750,
+        timestamp: baseTime + i * 300,
         difficulty: 100,
       });
     }
 
     const result = calculateASERTEstimate(mockBlocks);
 
-    // 2^((150 - 3750) / 3600) = 2^(-1) = 0.5, so change = -50%
-    expect(result.difficultyChange).toBeCloseTo(-50, 0);
+    // 2^((150 - 300) / 3600) - 1 ≈ -2.85%
+    expect(result.difficultyChange).toBeCloseTo(-2.85, 0);
+    expect(result.avgSolveTime).toBeCloseTo(300, 1);
   });
 
   test('should handle blocks exactly 1 halflife ahead of schedule', () => {

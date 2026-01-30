@@ -122,8 +122,9 @@ export function calculateASERTEstimate(
 
     let solveTime = block.timestamp - prevBlock.timestamp;
 
-    // Clamp negative solve times to 1 second (can happen with timestamp variance)
+    // Clamp solve times to reasonable bounds
     if (solveTime < 1) solveTime = 1;
+    if (solveTime > 6 * T) solveTime = 6 * T;
 
     totalSolveTime += solveTime;
     count++;
