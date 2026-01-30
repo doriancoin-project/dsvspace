@@ -772,11 +772,11 @@ export const restApiDocsData = [
           `,
         },
         codeSampleMainnet: {
-          esModule: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          commonJS: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          curl: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `{
-  address: "1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv",
+  address: "DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J",
   chain_stats: {
     funded_txo_count: 5,
     funded_txo_sum: 15007599040,
@@ -816,11 +816,11 @@ export const restApiDocsData = [
 }`
         },
         codeSampleSignet: {
-          esModule: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          commonJS: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          curl: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `{
-  address: "1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv",
+  address: "DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J",
   chain_stats: {
     funded_txo_count: 5,
     funded_txo_sum: 15007599040,
@@ -931,12 +931,12 @@ export const restApiDocsData = [
           `,
         },
         codeSampleMainnet: {
-          esModule: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          commonJS: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          curl: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `[
   {
-    txid: "dba43fd04b7ae3df8e5b596f2e7fab247c58629d622e3a5213f03a5a09684430",
+    txid: "d62ccaaf8fbef9b48c06b282bca2584429671427e695db3b18b573ec47e7f04d",
     version: 1,
     locktime: 0,
     vin: [ [Object] ],
@@ -979,11 +979,11 @@ export const restApiDocsData = [
 ]`
         },
         codeSampleSignet: {
-          esModule: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          commonJS: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          curl: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `{
-  address: "1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv",
+  address: "DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J",
   chain_stats: {
     funded_txo_count: 5,
     funded_txo_sum: 15007599040,
@@ -1085,9 +1085,9 @@ export const restApiDocsData = [
           `,
         },
         codeSampleMainnet: {
-          esModule: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          commonJS: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          curl: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `[
   {
     txid: "c4e53c2e37f4fac759fdb0d8380e4d49e6c7211233ae276a44ce7074a1d6d168",
@@ -1133,11 +1133,11 @@ export const restApiDocsData = [
 ],`
         },
         codeSampleSignet: {
-          esModule: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          commonJS: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          curl: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `{
-  address: "1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv",
+  address: "DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J",
   chain_stats: {
     funded_txo_count: 765,
     funded_txo_sum: 87749875807,
@@ -1244,9 +1244,9 @@ export const restApiDocsData = [
           `,
         },
         codeSampleMainnet: {
-          esModule: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          commonJS: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          curl: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `[
   {
     txid: "16cd9bbc6b62313a22d16671fa559aec6bf581df8b5853d37775c84b0fddfa90",
@@ -1280,9 +1280,9 @@ export const restApiDocsData = [
 ]`
         },
         codeSampleSignet: {
-          esModule: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          commonJS: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          curl: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `[
   {
     txid: "16cd9bbc6b62313a22d16671fa559aec6bf581df8b5853d37775c84b0fddfa90",
@@ -1371,9 +1371,9 @@ export const restApiDocsData = [
           `,
         },
         codeSampleMainnet: {
-          esModule: [`1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY`],
-          commonJS: [`1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY`],
-          curl: [`1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `[
   {
     txid: "12f96289f8f9cd51ccfe390879a46d7eeb0435d9e0af9297776e6bdf249414ff",
@@ -1409,9 +1409,9 @@ export const restApiDocsData = [
 ]`
         },
         codeSampleSignet: {
-          esModule: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          commonJS: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
-          curl: [`1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv`],
+          esModule: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          commonJS: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
+          curl: [`DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J`],
           response: `[
   {
     txid: "e58b47f657b496a083ad9a4fb10c744d5e993028efd9cfba149885334d98bdf5",
@@ -1944,7 +1944,7 @@ export const restApiDocsData = [
       ],
       "vout": [
         {
-          "scriptpubkey_address": "1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY",
+          "scriptpubkey_address": "DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J",
           "value": 638307429
         }
       ]
@@ -3518,8 +3518,8 @@ export const restApiDocsData = [
     "name": "SlushPool",
     "link": "https://slushpool.com/",
     "addresses": [
-      "1CK6KHY6MHgYvmRQ4PAafKYDrg1ejbH1cE",
-      "1AqTMY7kmHZxBuLUR5wJjPFUvqGs23sesr"
+      "DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J",
+      "DTuLiPTUV9utZuYHrWMwPHRq9UVtAQDq5J"
     ],
     "regexes": [
       "/slush/"
