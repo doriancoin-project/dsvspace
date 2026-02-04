@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "pool.doriancoin.com",
+    "link": "https://pool.doriancoin.com",
+    "addresses": [
+      "DTokenZ4r3DSVNNLbHrEHqTFKM43vNwqW7"
+    ],
+    "tags": [
+      "mandala.computer"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "miningcoin.online",
+    "link": "https://miningcoin.online",
+    "addresses": [
+      "DBVXqugeR3CJiq8i7LBDw5FNTMmfbDFhG7"
+    ],
+    "tags": []
+  }
+]
