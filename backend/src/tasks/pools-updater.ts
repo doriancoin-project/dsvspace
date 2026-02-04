@@ -23,6 +23,10 @@ class PoolsUpdater {
       return;
     }
 
+    if (!this.poolsUrl) {
+      return; // No pools URL configured
+    }
+
     const oneWeek = 604800;
     const oneDay = 86400;
 
@@ -34,28 +38,35 @@ class PoolsUpdater {
     this.lastRun = now;
 
     try {
-      const githubSha = await this.fetchPoolsSha(); // Fetch pools-v2.json sha from github
-      if (githubSha === null) {
-        return;
-      }
+      let githubSha: string | null = null;
 
-      if (config.DATABASE.ENABLED === true) {
-        this.currentSha = await this.getShaFromDb();
-      }
+      // Skip SHA checking if TREE_URL is not configured
+      if (this.treeUrl) {
+        githubSha = await this.fetchPoolsSha(); // Fetch pools-v2.json sha from github
+        if (githubSha === null) {
+          return;
+        }
 
-      logger.debug(`pools-v2.json sha | Current: ${this.currentSha} | Github: ${githubSha}`);
-      if (this.currentSha !== null && this.currentSha === githubSha) {
-        return;
-      }
+        if (config.DATABASE.ENABLED === true) {
+          this.currentSha = await this.getShaFromDb();
+        }
 
-      // See backend README for more details about the mining pools update process
-      if (this.currentSha !== null && // If we don't have any mining pool, download it at least once
-        config.MEMPOOL.AUTOMATIC_BLOCK_REINDEXING !== true && // Automatic pools update is disabled
-        !process.env.npm_config_update_pools // We're not manually updating mining pool
-      ) {
-        logger.warn(`Updated mining pools data is available (${githubSha}) but AUTOMATIC_BLOCK_REINDEXING is disabled`);
-        logger.info(`You can update your mining pools using the --update-pools command flag. You may want to clear your nginx cache as well if applicable`);
-        return;
+        logger.debug(`pools-v2.json sha | Current: ${this.currentSha} | Github: ${githubSha}`);
+        if (this.currentSha !== null && this.currentSha === githubSha) {
+          return;
+        }
+
+        // See backend README for more details about the mining pools update process
+        if (this.currentSha !== null && // If we don't have any mining pool, download it at least once
+          config.MEMPOOL.AUTOMATIC_BLOCK_REINDEXING !== true && // Automatic pools update is disabled
+          !process.env.npm_config_update_pools // We're not manually updating mining pool
+        ) {
+          logger.warn(`Updated mining pools data is available (${githubSha}) but AUTOMATIC_BLOCK_REINDEXING is disabled`);
+          logger.info(`You can update your mining pools using the --update-pools command flag. You may want to clear your nginx cache as well if applicable`);
+          return;
+        }
+      } else {
+        logger.debug(`POOLS_JSON_TREE_URL not configured, skipping SHA check`);
       }
 
       const network = config.SOCKS5PROXY.ENABLED ? 'tor' : 'clearnet';
@@ -78,7 +89,9 @@ class PoolsUpdater {
       try {
         await DB.query('START TRANSACTION;');
         await poolsParser.migratePoolsJson();
-        await this.updateDBSha(githubSha);
+        if (githubSha) {
+          await this.updateDBSha(githubSha);
+        }
         await DB.query('COMMIT;');
       } catch (e) {
         logger.err(`Could not migrate mining pools, rolling back. Exception: ${JSON.stringify(e)}`, logger.tags.mining);
