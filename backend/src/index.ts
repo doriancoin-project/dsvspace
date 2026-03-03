@@ -101,7 +101,7 @@ class Server {
         next();
       })
       .use(express.urlencoded({ extended: true }))
-      .use(express.text({ type: ['text/plain', 'application/base64'] }))
+      .use(express.text({ type: ['text/plain', 'application/base64', 'application/json'] }))
       ;
 
     if (config.DATABASE.ENABLED) {
