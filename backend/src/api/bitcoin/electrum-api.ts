@@ -126,6 +126,29 @@ class BitcoindElectrsApi extends BitcoinApi implements AbstractBitcoinApi {
     }
   }
 
+  async $getAddressUtxo(address: string): Promise<IEsploraApi.Utxo[]> {
+    const addressInfo = await this.bitcoindClient.validateAddress(address);
+    if (!addressInfo || !addressInfo.isvalid) {
+      return [];
+    }
+
+    try {
+      const scripthash = this.encodeScriptHash(addressInfo.scriptPubKey);
+      const utxos = await this.electrumClient.blockchainScripthash_listunspent(scripthash);
+      return utxos.map((utxo: any) => ({
+        txid: utxo.tx_hash,
+        vout: utxo.tx_pos,
+        value: utxo.value,
+        status: {
+          confirmed: utxo.height > 0,
+          block_height: utxo.height > 0 ? utxo.height : undefined,
+        },
+      }));
+    } catch (e: any) {
+      throw new Error(typeof e === 'string' ? e : e && e.message || e);
+    }
+  }
+
   private $getScriptHashBalance(scriptHash: string): Promise<IElectrumApi.ScriptHashBalance> {
     return this.electrumClient.blockchainScripthash_getBalance(this.encodeScriptHash(scriptHash));
   }

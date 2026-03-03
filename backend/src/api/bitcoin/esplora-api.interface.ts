@@ -114,6 +114,16 @@ export namespace IEsploraApi {
     tx_count: number;
   }
 
+  export interface Utxo {
+    txid: string;
+    vout: number;
+    value: number;
+    status: {
+      confirmed: boolean;
+      block_height?: number;
+    };
+  }
+
   export interface Outspend {
     spent: boolean;
     txid?: string;
