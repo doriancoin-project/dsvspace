@@ -101,6 +101,8 @@ class BitcoinRoutes {
       .post(config.MEMPOOL.API_URL_PREFIX + 'psbt/addparents', this.postPsbtCompletion)
       .get(config.MEMPOOL.API_URL_PREFIX + 'blocks-bulk/:from', this.getBlocksByBulk.bind(this))
       .get(config.MEMPOOL.API_URL_PREFIX + 'blocks-bulk/:from/:to', this.getBlocksByBulk.bind(this))
+      .get(config.MEMPOOL.API_URL_PREFIX + 'supply', this.getSupply)
+      .get(config.MEMPOOL.API_URL_PREFIX + 'supply/total', this.getTotalSupply)
       ;
 
       if (config.MEMPOOL.BACKEND !== 'esplora') {
@@ -727,6 +729,21 @@ class BitcoinRoutes {
     } catch (e) {
       res.status(500).send(e instanceof Error ? e.message : e);
     }
+  }
+
+  private async getSupply(req: Request, res: Response) {
+    try {
+      const result = await bitcoinClient.getTxOutSetInfo();
+      res.setHeader('content-type', 'text/plain');
+      res.send(result.total_amount.toString());
+    } catch (e) {
+      res.status(500).send(e instanceof Error ? e.message : e);
+    }
+  }
+
+  private getTotalSupply(req: Request, res: Response) {
+    res.setHeader('content-type', 'text/plain');
+    res.send('84000000');
   }
 
   private getDifficultyChange(req: Request, res: Response) {
