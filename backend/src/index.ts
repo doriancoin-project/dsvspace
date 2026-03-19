@@ -100,8 +100,8 @@ class Server {
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();
       })
-      .use(express.urlencoded({ extended: true }))
-      .use(express.text({ type: ['text/plain', 'application/base64', 'application/json'] }))
+      .use(express.urlencoded({ extended: true, limit: '2mb' }))
+      .use(express.text({ type: ['text/plain', 'application/base64', 'application/json'], limit: '2mb' }))
       ;
 
     if (config.DATABASE.ENABLED) {
